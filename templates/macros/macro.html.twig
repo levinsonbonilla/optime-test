@@ -1,0 +1,30 @@
+{% macro configuration_data_table(tableName,rowId,createdAt,rowActive) %}
+    <script>
+        
+        /* elements */
+        var rowId = parseInt("{{rowId}}"); 
+        var selectStatus = "<select id='"+rowId+"' class='form-control column_filter'><option value='2'>{{ 'active'|trans({}, 'messages') }}</option> <option value='1'>{{ 'enabled' |trans({}, 'messages') }}</option><option value='0'>{{ 'disable' |trans({}, 'messages') }}</option></select>";
+        var createdAt = "{{createdAt}}";
+        var inputCalendar = '<input type="date" id="'+createdAt+'" class="form-control column_filter" ';
+        var rowActive = "{{rowActive}}";
+        
+        /* translate */
+        var details = "{{ 'actions' |trans({}, 'messages') }}";
+        var search = "{{ 'search' |trans({}, 'messages')}}";
+        var active = "{{ 'active' |trans({}, 'messages') }}";
+        var createdAt = "{{ 'createdAt'|trans({}, 'messages') }}";
+        var lengthMenu = "{{ 'lengthMenu' |trans({}, 'messages') }}";
+        var zeroRecords = "{{ 'zeroRecords' |trans({}, 'messages') }}";
+        var info = "{{ 'info' |trans({}, 'messages') }}";
+        var infoEmpty = "{{ 'infoEmpty' |trans({}, 'messages') }}";
+        var emptyTable = "{{ 'emptyTable' |trans({}, 'messages') }}";
+        var loadingRecords = "{{ 'loadingRecords' |trans({}, 'messages') }}";
+        var processing = "{{ 'processing' |trans({}, 'messages') }}";
+        var infoFiltered = "{{ 'infoFiltered' |trans({}, 'messages') }}";
+        var next = "{{ 'next' |trans({}, 'messages') }}";
+        var previous = "{{ 'previous' |trans({}, 'messages') }}";
+        /* inputs */
+        var tableName = "{{tableName}}";
+        
+    </script>
+{% endmacro%} 

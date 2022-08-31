@@ -1,0 +1,539 @@
+@import "colors.scss";
+@import "~bootstrap/scss/bootstrap";
+@import "mega-options";
+@import "~datatables.net-bs5/css/dataTables.bootstrap5.min.css";
+@import "~bootstrap-icons/font/bootstrap-icons";
+@import "~select2/dist/css/select2";
+@import '~select2-bootstrap-5-theme/src/include-all';
+
+body {
+background-color: #f9fafb;
+position: relative;
+}
+
+.body-dashboard {
+
+    .content-section {
+        margin-top: 90px;
+    }
+}
+
+p {
+    color: #3f4b64;
+}
+
+.text-muted {
+    color: $text-color-muted !important;
+}
+
+/*--------------------------------------------
+Top Header
+--------------------------------------------*/
+
+.top-header {
+    background: white;
+
+    .nav-link {
+        color: $text-color;
+
+        i {
+            font-size: 1.2rem;
+        }
+
+
+        .nav-link-alert {
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            background-color: $danger;
+            border-radius: 50%;
+            width: 10px;
+            height: 10px;
+        }
+    }
+
+    .nav-link.show {
+        background: #3f4b6415;
+        border-radius: 4px;
+    }
+
+    .dropdown-menu {
+        top: 8px !important;
+    }
+
+    .dropdown-menu .btn {
+        color: $text-color;
+    }
+}
+
+.nav-link {
+    color: $text-color;
+}
+
+.nav-worklists {
+    background: white;
+    height: 71px;
+}
+
+.nav-scroller {
+    position: relative;
+    z-index: 2;
+    overflow-y: hidden;
+
+    .nav {
+        display: flex;
+        flex-wrap: nowrap;
+        padding-bottom: 1rem;
+        overflow-x: auto;
+        color: rgba(255, 255, 255, .75);
+        text-align: center;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+    }
+
+}
+
+.nav-underline .nav-link {
+    padding-top: .75rem;
+    padding-bottom: .75rem;
+    font-size: .875rem;
+    color: #6c757d;
+}
+
+.nav-underline .nav-link:hover {
+    color: #007bff;
+}
+
+.nav-underline .active {
+    font-weight: 500;
+    color: #343a40;
+}
+
+/* Avatar */
+
+.user-name {
+
+}
+
+.user-avatar {
+    width: 2.4rem;
+    height: 2.4rem;
+    background: #1C1D1F;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    object-fit: cover;
+    color: #fff;
+}
+
+
+.customer-avatar {
+    width: 2rem;
+    height: 2rem;
+    background: $primary-color;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    object-fit: cover;
+    color: #fff;
+}
+
+/*--------------------------------------------
+Offcanvas
+--------------------------------------------*/
+.offcanvas {
+    transition: transform 0.1s ease-in-out;
+}
+
+.user-offcanvas-icon {
+    width: 80px;
+}
+
+/*--------------------------------------------
+Badge
+--------------------------------------------*/
+.badge {
+    font-weight: normal;
+    font-size: 1rem;
+}
+
+.badge.bg-primary {
+    background-color: #2979FF20 !important;
+    color: $primary !important;
+}
+
+.badge.bg-light {
+    color: $text-color !important;
+}
+
+.badge.bg-danger {
+    background-color: #ff383810 !important;
+    color: $danger !important;
+}
+
+.badge.bg-secondary {
+    background-color: #546E7A25 !important;
+    color: #546E7A;
+}
+
+.badge.bg-warning {
+    background-color: #F57F1710 !important;
+    color: #E65100 !important;
+}
+
+.badge.bg-success {
+    background-color: #004D4010 !important;
+    color: #006064 !important;
+}
+
+/*--------------------------------------------
+Alerts
+--------------------------------------------*/
+.alert-success {
+    background: white;
+    border: none;
+    color: $text-color;
+    border-left: 5px solid $primary-color;
+}
+
+.alert-danger {
+    background: white;
+    border: none;
+    color: $text-color;
+    border-left: 5px solid $danger;
+}
+
+/*--------------------------------------------
+Buttons
+--------------------------------------------*/
+
+.btn-primary {
+    color: white;
+    transition: .2s;
+
+    &:hover {
+        box-shadow: 0 .5rem .5rem #01203d20;
+        transition: .2s ease;
+        color: white;
+    }
+}
+
+.btn-check:focus + .btn-primary, .btn-primary:focus {
+    color: white;  
+}
+
+.btn-secondary {
+    background: white;
+    border: 1px solid #f1f1f1;
+    color: $text-color;
+    transition: .2s;
+
+    &:hover {
+        background: #fafafa;
+        border: 1px solid #f1f1f1;
+        color: $text-color;
+        box-shadow: 0 .5rem .5rem #01203d20;
+        transition: .2s ease;
+    }
+}
+
+/*--------------------------------------------
+Cards
+--------------------------------------------*/
+
+.card {
+    border: none;
+}
+
+.card-header {
+    background: white;
+    border-bottom: 1px solid #F2F5FA;
+}
+
+.card-footer {
+    background: #fcfdff;
+}
+
+/*--------------------------------------------
+Dropdown menu
+--------------------------------------------*/
+
+.dropdown-menu {
+    color: $text-color;
+    border: none;
+    box-shadow: 0 1rem 1.5rem #00163350 !important;
+    border-radius: 0 0 0.25rem 0.25rem;
+}
+
+.dropdown-item {
+    color: #3f4b64;
+}
+
+.dropdown-item:hover, 
+.dropdown-item:focus {
+    color: #303b52;
+    background-color: #f0f1f3;
+}
+
+/*--------------------------------------------
+List group
+--------------------------------------------*/
+.list-group-item {
+    color: $text-color;
+}
+
+.list-item-borderless {
+    border: none !important;
+}
+
+/*--------------------------------------------
+Int tel input
+--------------------------------------------*/
+
+#error-msg, #error-msg-bus {
+    color: red;
+}
+
+#valid-msg, #valid-msg-bus {
+    color: #00C900;
+}
+
+input.error {
+    border: 1px solid #FF7C7C;
+}
+
+.hide {
+    display: none;
+}
+
+/*--------------------------------------------
+Pagination
+--------------------------------------------*/
+
+.pagination {
+    float: right;
+}
+
+.page-item.active .page-link {
+    color: white !important;
+    background: $primary;
+    border: 1px solid $primary;
+}
+
+.page-link {
+    color: $text-color !important;
+    background: #f9fafb;
+    border: 1px solid #f9fafb;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+    color: #2979FF !important;
+    background: #f9fafb;
+}
+
+.dataTables_info {
+    float: left;
+}
+
+.worklist-pagination {
+    background: white;
+    padding: 15px 15px 0 15px;
+}
+
+.worklist-filters {
+    background: white;
+    padding: 10px 0;
+}
+
+/*--------------------------------------------
+Tables
+--------------------------------------------*/
+
+/* Arrow sort */ 
+table.dataTable > thead .sorting:before,
+table.dataTable > thead .sorting:after,
+table.dataTable > thead .sorting_asc:before,
+table.dataTable > thead .sorting_asc:after,
+table.dataTable > thead .sorting_desc:before,
+table.dataTable > thead .sorting_desc:after,
+table.dataTable > thead .sorting_asc_disabled:before,
+table.dataTable > thead .sorting_asc_disabled:after,
+table.dataTable > thead .sorting_desc_disabled:before,
+table.dataTable > thead .sorting_desc_disabled:after {
+    font-size: .75rem;
+}
+
+.table {
+    color: $text-color;
+    border-color: #F2F5FA;
+}
+
+.table > :not(caption) > * > * {
+    padding: 1rem 0.5rem;
+}
+
+table.dataTable thead th,
+.table > :not(:last-child) > :last-child > *{
+    border-bottom: 1px solid #F2F5FA;
+}
+
+table.dataTable tfoot th {
+    border-top: 1px solid #F2F5FA;
+}
+
+.table-hover > tbody > tr:hover {
+    --bs-table-accent-bg: #f8fbff81;
+}
+
+.table-striped > tbody > tr:nth-of-type(odd) {
+    --bs-table-accent-bg: #F2F5FA50;
+}
+
+.table-hover > tbody > tr:hover > * {
+    --bs-table-accent-bg: #f8fbffea;
+}
+
+.table > :not(:first-child) {
+    border-top: none;
+}
+
+table.dataTable>thead .sorting:before, 
+table.dataTable>thead .sorting_asc:before, 
+table.dataTable>thead .sorting_desc:before, 
+table.dataTable>thead .sorting_asc_disabled:before, 
+table.dataTable>thead .sorting_desc_disabled:before,
+table.dataTable>thead .sorting:after, 
+table.dataTable>thead .sorting_asc:after, 
+table.dataTable>thead .sorting_desc:after, 
+table.dataTable>thead .sorting_asc_disabled:after, 
+table.dataTable>thead .sorting_desc_disabled:after  {
+    top: 22px;
+}
+
+.sorting_asc, .sorting_desc {
+    color: $primary-color;
+}
+
+.worklist-wrapper {
+    background: white;
+}
+
+/*--------------------------------------------
+Form control
+--------------------------------------------*/
+.form-control:focus {
+    border-color: $primary-color;
+    transition: all .4s ease;
+    outline: 0;
+    box-shadow: none;
+}
+
+.input-group-text {
+    background-color: white;
+    border: none;
+    border-top: 1px solid #ced4da;
+    border-bottom: 1px solid #ced4da;
+    border-left: 1px solid #ced4da;
+}
+
+.input-icon {
+    position: relative;
+}
+
+.input-icon .form-control {
+    padding-left: calc(1.5em + 1.3rem + 2px);
+}
+
+.input-icon span i {
+    line-height: 0;
+    color: #7E8299;
+}
+
+.input-icon span {
+    left: 0;
+    top: 0;
+    bottom: 0;
+    position: absolute;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    width: calc(1.5em + 1.3rem + 2px);
+}
+
+/*--------------------------------------------
+Tooltips
+--------------------------------------------*/
+.tooltip-inner {
+    background-color: white;
+    color: $text-color;
+    font-size: 1rem;
+    box-shadow: 0 0 10px #3f4b6450;
+}
+
+.tooltip-arrow {
+    display: none;
+}
+
+.bs-tooltip-end, .bs-tooltip-top{
+    .tooltip-arrow {
+        display: none;
+
+        &::before {
+            display: none;
+        }
+    }
+}
+
+/*--------------------------------------------
+Dashboard
+--------------------------------------------*/
+.dashboard-icon {
+    color: white;
+    background: $primary-color;
+    box-shadow: 0 0 15px #1F88FC50;
+    border-radius: 10px;
+}
+
+/*--------------------------------------------
+Marketplace
+--------------------------------------------*/
+
+.CircleBadge--small {
+    width: 56px;
+    height: 56px;
+}
+
+.CircleBadge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    // background-color: var(--color-canvas-default);
+    border-radius: 50%;
+    //box-shadow: var(--color-shadow-medium);
+}
+
+.CircleBadge-icon {
+    max-width: 60% !important;
+    height: auto !important;
+    max-height: 55% !important;
+}
+
+/*--------------------------------------------
+Helpers
+--------------------------------------------*/
+.shadow-lg {
+    box-shadow: 0 0 1.7rem #01203d15 !important;
+}
+
+/*
+Dark Theme
+*/
+@import "dark";

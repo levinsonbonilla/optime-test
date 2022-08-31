@@ -1,0 +1,44 @@
+.option {
+    display: flex;
+    padding: 1.4em;
+    border: 1px solid #EBEDF3;
+    border-radius: 0.42rem;
+
+}
+
+.option .option-control {
+    width: 2.7em;
+    padding-top: 0.1rem;
+}
+
+.option .option-label {
+    width: 100%;
+}
+
+.option .option-label .option-head {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+
+.option-title {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #3F4254;
+}
+
+.option .option-label .option-head .option-focus {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #181C32;
+}
+
+.option .option-label .option-body {
+    display: block;
+    padding-top: 0.7rem;
+    font-size: 0.9rem;
+    color: #B5B5C3;
+}

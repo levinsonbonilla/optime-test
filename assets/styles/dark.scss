@@ -1,0 +1,325 @@
+//$dark-background:           #1c1e25;
+$dark-background:           #0d0e19;
+$dark-header:               #13151d;
+$dark-toast-header:         #292a31;
+$dark-toast-body:         rgb(60, 63, 70);
+$dark-offcanvas-bg:         #1a1c25;
+$dark-card-bg:              #13151d;
+$dark-dropdown:             #141625;
+$dark-border:               #101e33;
+$dark-text-color:           #c0c0c0;
+$dark-form-control-bg:      #08111f;
+$dark-form-control-border:  #3c4870;
+$dark-link-color:           #52acf7;
+$dark-active-state:         #52acf7;
+
+body.dark {
+    background: $dark-background;
+    color: $dark-text-color;
+
+    a {
+        color: $dark-link-color;
+    }
+
+    p {
+        color: $dark-text-color;
+    }
+
+    .btn-primary {
+        color: white;
+    }
+
+    .bg-light {
+        background: #13151d !important;
+    }
+
+    .btn-light {
+        background: rgb(26, 32, 46);
+        border: 1px solid rgb(26, 32, 46);
+        color: $dark-text-color;
+    }
+
+    .btn-close {
+        color: $dark-text-color;
+    }
+
+    .btn-menu {
+        color: $dark-text-color;
+
+        &:hover {
+            color: $dark-text-color;
+        }
+    }
+
+    .badge.bg-light {
+        background: rgb(26, 32, 46) !important;
+        color: $dark-text-color !important;
+    }
+
+    /*--------------------------------------------
+    Form control
+    --------------------------------------------*/
+
+    .form-control, .form-select {
+        color: $dark-text-color;
+        background: rgb(26, 32, 46);
+        border: 1px solid rgb(26, 32, 46);
+    }
+
+    .form-control:focus {
+        border-color: $primary-color;
+      }
+
+    .form-check-input {
+        background: rgb(51, 56, 68);
+        border: 1px solid $dark-border;
+    }
+
+    .form-check-input:checked {
+        background-color: $primary-color;
+    }
+
+    .input-group-text {
+        background: rgb(26, 32, 46);
+        border: 1px solid rgb(26, 32, 46);
+        color: $dark-text-color
+    }
+
+    /*--------------------------------------------
+    Border
+    --------------------------------------------*/
+
+    .border {
+        border: 1px solid $dark-border !important;
+    }
+
+    .border-top {
+        border-top: 1px solid $dark-border !important;
+    }
+
+    .border-bottom {
+        border-bottom: 1px solid $dark-border !important;
+    }
+
+    .border-end {
+        border-right: 1px solid $dark-border !important;
+    }
+
+    .border-start {
+        border-left: 1px solid $dark-border !important;
+    }
+
+    .border-5 {
+        border-width: 5px !important;
+    }
+
+    /*--------------------------------------------
+    Navigation
+    --------------------------------------------*/
+
+    .top-header, .sidebar {
+        background: $dark-header;
+    }
+
+    .top-header .nav-link {
+        color: $dark-text-color;
+    }
+
+    .nav-underline .nav-link {
+        color: $dark-text-color;
+    }
+
+    .nav-underline .active {
+        color: $dark-active-state;
+        border-bottom: 2px solid $dark-active-state;
+    }
+
+    .offcanvas {
+        background: $dark-offcanvas-bg;
+
+        .list-group, .list-group-item {
+            background: $dark-offcanvas-bg;
+            color: $dark-text-color;
+        }
+    }
+
+    .sidebar i {
+        color: $dark-text-color;
+    }
+
+    .sidebar li a {
+        background: $dark-header;
+    }
+
+    .sidebar li a.active {
+        background: $dark-active-state;
+
+        i {
+            color: white;
+        }
+    }
+
+    .sidebar li a .links_name {
+        color: $dark-text-color;
+    }
+
+    .sidebar li a.active .links_name {
+        color: rgb(245, 245, 245);
+    }
+
+    .nav-worklists, .worklist-pagination, .worklist-filters, .worklist-wrapper {
+        background: $dark-card-bg;
+    }
+
+     /*--------------------------------------------
+    Dropdown
+    --------------------------------------------*/
+
+    .dropdown-menu {
+        background: rgb(26, 32, 46);
+        color: $dark-text-color;
+    }
+
+    .dropdown-item {
+        color: $dark-text-color;
+    }
+
+    .dropdown-item:hover, .dropdown-item:focus {
+        background-color: #1b2738;
+    }
+
+    /*--------------------------------------------
+    Tables
+    --------------------------------------------*/
+
+    .table {
+        td, th {
+            color: $dark-text-color;
+        }
+    }
+
+    thead, tbody, tfoot, tr, td, th {
+        border-color: $dark-border !important;
+    }
+
+    .table-hover > tbody > tr:hover > * {
+        --bs-table-accent-bg: #181d33;
+        color: white;
+    }
+
+    .page-item.active .page-link {
+        color: white !important;
+        background: $dark-active-state;
+        border: 1px solid $dark-active-state;
+    }
+      
+    .page-link {
+        color: $dark-text-color !important;
+        background: transparent;
+        border: 1px solid $dark-border;
+    }
+
+    .page-item.disabled .page-link {
+        color: rgb(26, 32, 46);
+        background-color: rgb(26, 32, 46);
+        border-color: $dark-border;
+    }
+    
+    .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+        color: #2979FF !important;
+        background: #f9fafb;
+    }
+
+    /*--------------------------------------------
+    Card
+    --------------------------------------------*/
+    .card {
+        background: $dark-header;
+    }
+
+    /*--------------------------------------------
+    Badge
+    --------------------------------------------*/
+    
+    .badge.bg-primary {
+        background-color: #2979FF20 !important;
+        color: $primary !important;
+    }
+    
+    .badge.bg-danger {
+        background-color: #ff383810 !important;
+        color: #f52828 !important;
+    }
+    
+    /*.badge.bg-secondary {
+        background-color: #546E7A10 !important;
+        color: #546E7A;
+    }*/
+    
+    .badge.bg-warning {
+        background-color: #FFF17610 !important;
+        color: #FB8C00 !important;
+    }
+    
+    .badge.bg-success {
+        background-color: #004D4010 !important;
+        color: #006064 !important;
+    }
+
+    /*--------------------------------------------
+    Modal
+    --------------------------------------------*/
+    .modal-content {
+        background: $dark-header;
+    }
+
+    .modal-header {
+        border-bottom: 1px solid $dark-border;
+    }
+
+    .modal-footer {
+        border-top: 1px solid $dark-border;
+    }
+
+    /*--------------------------------------------
+    Nav tabs
+    --------------------------------------------*/
+
+    .nav-header {
+
+        .nav-item {
+
+            .nav-link {
+
+            }
+
+            .nav-link.active {
+                background: transparent;
+                border: none;
+                color: $dark-active-state;
+            }
+    
+        }
+        
+    }
+
+    /*--------------------------------------------
+    Toast
+    --------------------------------------------*/
+
+    .toast {
+        border: 1px solid $dark-toast-header;
+        background-color: $dark-background;
+        box-shadow: 6px 6px 6px #0d0e1950;
+    }
+
+    .toast-header {
+        background-color: $dark-toast-header;
+        border: 1px solid $dark-toast-header;
+        color: #cccccc;
+    }
+
+    .toast-body {
+        background-color: $dark-toast-body;
+    }
+}

@@ -1,0 +1,118 @@
+{% extends 'base.html.twig' %}
+{% import "macros/macro.html.twig" as macro %}
+
+{% block title %}{{ 'products'|trans({}, 'messages') }}{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+    <div class="card shadow-lg">
+        <div class="card-header">
+            <div class="row mt-2">
+                <div class="col-md-6">
+                    <h5 class="mb-0">{{ 'productListing'|trans({}, 'messages') }}</h5>
+                    <p class="text-muted"><small>{{ 'productListingManagement'|trans({}, 'messages') }}</small></p>
+                </div>
+                <div class="col-md-6">
+                    <a href="{{ path('app_product_new') }}" class="btn btn-primary float-end">{{ 'addNewProduct'|trans({}, 'messages') }}</a>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            {# Filters #}
+            <div class="row mb-3">
+                <div class="col-md-3" style="margin-top: 31px;">
+                    <div class="list-buttons">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <label for="3" class="form-label">{{ 'brand'|trans({}, 'messages') }}</label>
+                    <input type="text" class="form-control column_filter" id="3">
+                </div>
+                <div class="col-md-3">
+                    <label for="8" class="form-label">{{ 'category'|trans({}, 'messages') }}</label>
+                    <select id="8" class="form-select column_filter">
+                        <option value="0">{{ 'category'|trans({}, 'messages') }}</option>
+                        {% for category in categories %}
+                            <option value="{{category.id}}">{{ category.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label for="6" class="form-label">{{ 'active'|trans({}, 'messages') }}</label>
+                    <select id="6" class="form-select column_filter">
+                        <option value="2">{{ 'status'|trans({}, 'messages') }}</option>
+                        <option value="1">{{ 'yes'|trans({}, 'messages') }}</option>
+                        <option value="0">{{ 'no'|trans({}, 'messages') }}</option>
+                    </select>
+                </div>
+            </div>
+            
+            {#Product list#}
+            <div class="table-responsive">
+                <table id="product-list" class="table table-bordered table-hover" style="width: 100%;">
+                    <thead>
+                        <tr>
+                            <th>{{ 'category'|trans({}, 'messages') }}</th>
+                            <th>{{ 'code'|trans({}, 'messages') }}</th>
+                            <th>{{ 'name'|trans({}, 'messages') }}</th>
+                            <th>{{ 'brand'|trans({}, 'messages') }}</th>
+                            <th>{{ 'price'|trans({}, 'messages') }}</th>
+                            <th>{{ 'createdAt'|trans({}, 'messages') }}</th>
+                            <th>{{ 'active'|trans({}, 'messages') }}</th>
+                            <th class="notexport">{{ 'id'|trans({}, 'messages') }}</th>
+                            <th class="notexport">{{ 'actions'|trans({}, 'messages') }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    {{ 
+        macro.configuration_data_table(
+            "#product-list",
+            7,
+            5,
+            6
+        )
+    }}
+    <script>
+        /* datatable info */
+        /* functions */
+        function filtersDataTable() {
+            var filter = {
+                "3":{"value":$("#3").val(),"condition":"and"},
+                "8":{"value":$("#8").val(),"condition":"and"},
+                "6":{"value":$("#6").val(),"condition":"and"}
+            };
+            return filter;
+        }
+        /* paths */
+        var ajaxPath = "{{ path('app_product_list') }}";
+        var pathEdit = "{{ path('app_product_update', {id: 'change'}) }}";
+ 
+        /* array */
+        var columnDefs = [
+            { "name": "category",   "targets": 0 },
+            { "name": "code",   "targets": 1 },
+            { "name": "name",   "targets": 2 },
+            { "name": "brand",   "targets": 3 },
+            { "name": "price",   "targets": 4 },
+            { "name": "createdAt",   "targets": createdAt },
+            { "name": "active",  "targets": rowActive },
+            { "id": "id", "targets": rowId,"visible": false },
+            { "defaultContent": 
+                "<button class='btn btn-light buttonEdit'>{{ 'edit' |trans({}, 'messages') }}</button>"
+                ,
+                targets: 8,data: null }
+        ];
+        
+    </script>
+    {{ encore_entry_script_tags('data-table-structure') }}   
+{% endblock %}

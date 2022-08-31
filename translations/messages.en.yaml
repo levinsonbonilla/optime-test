@@ -1,0 +1,38 @@
+# translation to English
+newProduct: Product new
+product: Product
+backToList: Back to list
+registerNewProduct: Register new product
+pleaseFillOutAllTheFields: please fill out all the fields
+productInformation: Product information
+category: Category
+selectOption: Select option
+code: Code
+name: Name
+description: Description
+brand: Brand
+price: Price
+success: successful operation!
+createProduct: Create product
+products: Products
+productListing: productListing
+productListingManagement: Product listing management
+addNewProduct: Add new product
+active: Active
+enabled: Enabled
+disable: Disable
+actions: Actions
+search: Search
+lengthMenu: Show _MENU_ records
+zeroRecords: Nothing found
+info: Showing from _START_ to _END_ of a total of _TOTAL_
+infoEmpty: No records
+emptyTable: No data to display
+loadingRecords: Loading...
+processing: Processing...
+infoFiltered: (filtered a total of _MAX_ records)
+next: Next
+previous: Previous
+createdAt: Created at
+yes: Yes
+no: No
