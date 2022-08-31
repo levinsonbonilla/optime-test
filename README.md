@@ -1,8 +1,8 @@
-# optime-test
-optime test en symfony 6.1
+# Optime-test
+Optime test en symfony 6.1
 
 # Descripción
-El presente proyecto es el administrador de Imex cloud, en el cual será posible crear partners, customers y users.
+El presente proyecto es una prueba para selección a la empresa Optime
 
 # Requerimientos
 - PHP = 8.1.1

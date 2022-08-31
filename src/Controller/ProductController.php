@@ -22,7 +22,7 @@ class ProductController extends AbstractController
         $this->utils = $utils;
     }
 
-    #[Route('/product', name: 'app_product')]
+    #[Route('/', name: 'app_product')]
     public function index(): Response
     {
         return $this->render('product/index.html.twig', [
