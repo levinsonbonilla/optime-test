@@ -15,7 +15,7 @@ price: Price
 success: successful operation!
 createProduct: Create product
 products: Products
-productListing: productListing
+productListing: Product listing
 productListingManagement: Product listing management
 addNewProduct: Add new product
 active: Active

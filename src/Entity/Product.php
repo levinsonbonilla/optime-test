@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Symfony\Component\Validator\Constraints as Assert;
 use App\Repository\ProductRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
@@ -13,17 +14,30 @@ class Product
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
-
     #[ORM\Column(length: 255, unique:true)]
+    #[Assert\NotBlank]
+    #[Assert\Length(
+        min: 4,
+        max: 10,
+        minMessage: 'Your code must be at least {{ limit }} characters long',
+        maxMessage: 'Your code cannot be longer than {{ limit }} characters',
+    )]
     private ?string $code = null;
 
     #[ORM\Column(length: 150, unique:true)]
+    #[Assert\NotBlank]
+    #[Assert\Length(
+        min: 4,
+        minMessage: 'Your name must be at least {{ limit }} characters long',
+    )]
     private ?string $name = null;
 
     #[ORM\Column(type: Types::TEXT)]
+    #[Assert\NotBlank]
     private ?string $description = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank]
     private ?string $brand = null;
 
     #[ORM\ManyToOne(inversedBy: 'category')]
@@ -31,6 +45,8 @@ class Product
     private ?Category $category = null;
 
     #[ORM\Column]
+    #[Assert\NotBlank]
+    #[Assert\Positive]
     private ?float $price = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]

@@ -80,9 +80,15 @@ class ProductController extends AbstractController
                 "active"=>true
             ];
 
-            $this->em->getRepository(Product::class)->createProduct($data);
+            $errors = $this->em->getRepository(Product::class)->createProduct($data);
 
-            $this->addFlash('success',$this->translator->trans('success') );
+            if (is_object($errors)) {
+                foreach ($errors as $error) {
+                    $this->addFlash('error',$error->getMessage() );
+                }
+            }else{
+                $this->addFlash('success',$this->translator->trans('success') );
+            }
 
         } catch (\Throwable $throwable) {
             $this->addFlash('error',$throwable->getMessage());
@@ -116,9 +122,16 @@ class ProductController extends AbstractController
                 "active"=>$active
             ];
 
-            $this->em->getRepository(Product::class)->updateProduct($data);
+            $errors = $this->em->getRepository(Product::class)->updateProduct($data);
 
-            $this->addFlash('success',$this->translator->trans('success') );
+            if (is_object($errors)) {
+                foreach ($errors as $error) {
+                    $this->addFlash('error',$error->getMessage() );
+                }
+            }else{
+                $this->addFlash('success',$this->translator->trans('success') );
+            }
+            
         } catch (\Throwable $throwable) {
             $this->addFlash('error',$throwable->getMessage());
         }
@@ -174,4 +187,17 @@ class ProductController extends AbstractController
         ];
         return $this->json($data,200);
     }
+
+     /**
+     * @Route(path="/change-language/{lang}", name="change-language", methods={"GET"})
+     */
+    public function changeLanguage(Request $request, $lang) {
+        $this->utils->changeLanguage($request, $lang, true);
+
+        if ($request->headers->get('referer') != null) {
+            return $this->redirect($request->headers->get('referer'));
+        } else {
+            return $this->redirect('/');
+        }
+    }  
 }

@@ -1,0 +1,67 @@
+ <header class="top-header fixed-top d-flex flex-wrap justify-content-center py-2 px-3 shadow-lg">
+    <span class=" me-md-auto">
+        <a class="btn btn-menu fs-4"><i class="bi bi-list" id="btn"></i></a>
+    </span>
+    <ul class="nav align-items-center">
+        <li class="nav-item">
+            <a href="javascript:void(0)" data-bs-toggle="offcanvas" data-bs-target="#offCanvasUserMenu" aria-controls="offCanvasUserMenu" class="nav-link m-0 p-0">
+                <span class="user-name me-2">Levinson bonilla</span>
+                <span class="user-avatar">
+                    LE
+                </span>
+            </a>
+        </li>
+    </ul>
+</header>
+
+{# OFFCANVAS USER MENU #}
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offCanvasUserMenu">
+    <div class="offcanvas-header pb-0">
+        <button type="button" class="btn btn-light ms-auto" data-bs-dismiss="offcanvas" aria-label="Close">
+            <i class="bi bi-x-lg"></i>
+        </button>
+    </div>
+    <div class="offcanvas-body pt-0">
+        <span class="user-avatar float-start me-4 fs-3" style="height: 70px; width: 70px;">
+            LE
+        </span>
+        <h6 class="mb-0">Levinson Bonilla</h6>
+        <h6 class="text-muted"><small>levinson.bonilla@gmail.com</small></h6>
+        <span class="badge bg-primary">Developer</span>
+        <div class="clearfix border-bottom mt-5"></div>
+        <div class="mt-4">
+            <div class="list-group">
+                
+                <a href="{{path('change-language',{ 'lang':'es' })}}" class="list-group-item list-item-borderless list-group-item-action d-flex gap-3 py-2 px-0" aria-current="true">
+                    <div class="user-offcanvas-icon bg-light p-3 me-3 d-inline text-center">
+                        <i class="bi bi-translate"></i>
+                    </div>
+                    <div class="d-flex gap-2 w-100 justify-content-between">
+                        <div>
+                            <h6 class="mb-0 mt-1">{{ 'spanish'|trans({}, 'messages') }}</h6>
+                            <p class="mb-0 opacity-75">{{ 'changeLanguage'|trans({}, 'messages') }} {{ 'spanish'|trans({}, 'messages') }}</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="{{path('change-language',{ 'lang':'en' })}}" class="list-group-item list-item-borderless list-group-item-action d-flex gap-3 py-2 px-0" aria-current="true">
+                    <div class="user-offcanvas-icon bg-light p-3 me-3 d-inline text-center">
+                        <i class="bi bi-translate"></i>
+                    </div>
+                    <div class="d-flex gap-2 w-100 justify-content-between">
+                        <div>
+                            <h6 class="mb-0 mt-1">{{ 'english'|trans({}, 'messages') }}</h6>
+                            <p class="mb-0 opacity-75">{{ 'changeLanguage'|trans({}, 'messages') }} {{ 'english'|trans({}, 'messages') }}</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+// Simple script to change theme
+function toggleTheme() {
+  var element = document.body;
+  element.classList.toggle("dark");
+}
+</script>

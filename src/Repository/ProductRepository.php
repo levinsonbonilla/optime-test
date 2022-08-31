@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Doctrine\Persistence\ManagerRegistry;
 use App\Entity\Product;
 use App\Handler\Utils;
@@ -19,11 +20,13 @@ class ProductRepository extends ServiceEntityRepository
 {
     private $columns;
     private $utils;
+    private $validator;
 
-    public function __construct(ManagerRegistry $registry,Utils $utils)
+    public function __construct(ManagerRegistry $registry,Utils $utils,ValidatorInterface $validator )
     {
         parent::__construct($registry, Product::class);
         $this->utils = $utils;
+        $this->validator = $validator;
         $this->columns = [
             "0" => "c.name",
             "1" => "p.code",
@@ -60,11 +63,14 @@ class ProductRepository extends ServiceEntityRepository
         $product->setUpdatedAt($updatedAt);
         $product->setActive($active);
 
+        $errors = $this->validator->validate($product);
+        if (count($errors) > 0) {
+            return $errors;
+        }
+
         $em = $this->getEntityManager();
         $em->persist($product);
         $em->flush();
-        
-        return $product;
     }
          
     public function findRegistersToList($data,$isCount = false)
@@ -122,12 +128,14 @@ class ProductRepository extends ServiceEntityRepository
         $product->setUpdatedAt($updatedAt);
         $product->setActive($active);
 
+        $errors = $this->validator->validate($product);
+        if (count($errors) > 0) {
+            return $errors;
+        }
+
         $em = $this->getEntityManager();
         $em->persist($product);
         $em->flush();
-
-        return $product;
-
     } 
 
 }

@@ -1,0 +1,43 @@
+# translation to Spanish
+newProduct: Producto nuevo
+product: Producto
+backToList: Volver a la lista
+registerNewProduct: Registrar nuevo producto
+pleaseFillOutAllTheFields: Por favor complete todos los campos
+productInformation: Información del producto
+category: Categoría
+selectOption: Seleccionar opción
+code: Código
+name: Nombre
+description: Descripción
+brand: Marca
+price: Precio
+success: Operación exitosa!
+createProduct: Crear producto
+products: Productos
+productListing: Listado de productos
+productListingManagement: Gestión de listas de productos
+addNewProduct: Agregar nuevo producto
+active: Activo
+enabled: Habilitado
+disable: Deshabilitar
+actions: Acciones
+search: Buscar
+lengthMenu: Mostrar _MENU_ registros
+zeroRecords: No se encontró nada
+info: Mostrando del _START_ al _END_ de un total de _TOTAL_
+infoEmpty: Sin registros
+emptyTable: No hay datos para mostrar
+loadingRecords: Cargando...
+processingprocessing: Procesando...
+infoFiltered: (filtró un total de _MAX_ registros)
+next: Siguiente
+previous: Anterior
+createdAt: Creado en
+yes: Si
+no: No
+editProduct: Editar producto
+delete: Eliminar
+deleteProduct: Eliminar producto
+cancel: Cancelar
+removeProduct: eliminar el producto
