@@ -7,6 +7,28 @@
 <div class="container-fluid">
     <div class="card shadow-lg">
         <div class="card-header">
+            {% for flashMessage in app.session.flashbag.get('success') %}
+                {# Success alert message #}
+                <div class="alert alert-success shadow-lg py-2 d-flex align-items-center">
+                    <div class="flex-shrink-0">
+                        <i class="bi bi-check-circle text-primary fs-1 float-start me-3"></i>
+                    </div>
+                    <div class="flex-grow-1 ms-3">
+                        {{ flashMessage }}
+                    </div>
+                </div>
+            {% endfor %}
+            {% for flashMessage in app.session.flashbag.get('error') %}
+                {# Error alert message #}
+                <div class="alert alert-danger shadow-lg py-2 d-flex align-items-center">
+                    <div class="flex-shrink-0">
+                        <i class="bi bi-exclamation-triangle text-danger fs-1 float-start me-3"></i>
+                    </div>
+                    <div class="flex-grow-1 ms-3">
+                        {{ flashMessage }}
+                    </div>
+                </div>
+            {% endfor %}
             <div class="row mt-2">
                 <div class="col-md-6">
                     <h5 class="mb-0">{{ 'productListing'|trans({}, 'messages') }}</h5>
@@ -96,6 +118,7 @@
         /* paths */
         var ajaxPath = "{{ path('app_product_list') }}";
         var pathEdit = "{{ path('app_product_update', {id: 'change'}) }}";
+        var pathDelete = "{{ path('app_product_delete', {id: 'change'}) }}";
  
         /* array */
         var columnDefs = [
@@ -108,7 +131,8 @@
             { "name": "active",  "targets": rowActive },
             { "id": "id", "targets": rowId,"visible": false },
             { "defaultContent": 
-                "<button class='btn btn-light buttonEdit'>{{ 'edit' |trans({}, 'messages') }}</button>"
+                "<button class='btn btn-light buttonEdit'>{{ 'edit' |trans({}, 'messages') }}</button> &nbsp"+
+                "<button class='btn btn-danger buttonDelete'>{{ 'delete' |trans({}, 'messages') }}</button>"
                 ,
                 targets: 8,data: null }
         ];

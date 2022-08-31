@@ -38,6 +38,25 @@ class ProductController extends AbstractController
         ]);
     }
 
+    #[Route('/product/delete/{id}', name: 'app_product_delete')]
+    public function delete($id): Response
+    {
+        $product = $this->em->getRepository(Product::class)->findById($id);
+        return $this->render('product/delete.html.twig', [
+            "product" => $product,
+        ]);
+    }
+
+    #[Route('/product/update/{id}', name: 'app_product_update')]
+    public function update($id): Response
+    {
+        $product = $this->em->getRepository(Product::class)->findById($id);
+        return $this->render('product/update.html.twig', [
+            'categories' => $this->em->getRepository(Category::class)->findAllInArray(),
+            'product' => $product
+        ]);
+    }
+
     #[Route('/product/new/action', name: 'app_product_new_action')]
     public function newAction(Request $request): Response
     {
@@ -71,13 +90,55 @@ class ProductController extends AbstractController
 
         return $this->redirectToRoute('app_product_new');
     }
-
-    #[Route('/product/update/{id}', name: 'app_product_update')]
-    public function update($id): Response
+    
+    #[Route('/product/edit/action', name: 'app_product_update_action')]
+    public function updateAction(Request $request): Response
     {
-        return $this->render('product/update.html.twig', [
-            'controller_name' => 'ProductController',
-        ]);
+        $code = $request->get('code',null);
+        $name = $request->get('name',null);
+        $description = $request->get('description',null);
+        $brand = $request->get('brand',null);
+        $price = str_replace(".","", $request->get('price',null) );
+        $category = $request->get('category',null);
+        $active = $request->get('active',false);
+        $id = $request->get('productId',null);
+        
+        try{
+            $data = [
+                "id" => $id,
+                "category" => $this->em->getRepository(Category::class)->find($category),
+                "code"=>$code,
+                "name"=>$name,
+                "description"=>$description,
+                "brand"=>$brand,
+                "price"=>$price,
+                "updatedAt"=> new \DateTime(),
+                "active"=>$active
+            ];
+
+            $this->em->getRepository(Product::class)->updateProduct($data);
+
+            $this->addFlash('success',$this->translator->trans('success') );
+        } catch (\Throwable $throwable) {
+            $this->addFlash('error',$throwable->getMessage());
+        }
+
+        return $this->redirectToRoute('app_product_update',["id"=>$id]);
+    }
+
+    #[Route('/product/delete/action/{id}', name: 'app_product_delete_action')]
+    public function deleteAction($id): Response
+    {
+        $product = $this->em->getRepository(Product::class)->find($id);
+        $name = $product->getName();
+        try{
+            $this->em->getRepository(Product::class)->remove($product,true);
+            $this->addFlash('success',$this->translator->trans('Product was removed')." $name" );
+        } catch (\Throwable $throwable) {
+            $this->addFlash('error',$throwable->getMessage());
+        }
+
+        return $this->redirectToRoute('app_product');
     }
 
     #[Route('/product/list', name: 'app_product_list')]

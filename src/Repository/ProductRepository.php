@@ -66,7 +66,6 @@ class ProductRepository extends ServiceEntityRepository
         
         return $product;
     }
-
          
     public function findRegistersToList($data,$isCount = false)
     {
@@ -97,5 +96,38 @@ class ProductRepository extends ServiceEntityRepository
             ->getResult();
         }
     }
+
+    public function findById($productId)
+    {
+       return $this->createQueryBuilder('p')
+           ->select("p.id,c.id as category, p.code, p.name, p.description, p.brand, p.price, p.active")
+           ->join("p.category","c")
+           ->where("p.id = :productId")
+           ->setParameter("productId",$productId)
+           ->getQuery()
+           ->getOneOrNullResult()
+       ;
+    }
+
+    public function updateProduct(array $data){        
+        extract($data);
+        
+        $product = $this->find($id);
+        $product->setCode($code);
+        $product->setName($name);
+        $product->setCategory($category);
+        $product->setDescription($description);
+        $product->setBrand($brand);
+        $product->setPrice($price);
+        $product->setUpdatedAt($updatedAt);
+        $product->setActive($active);
+
+        $em = $this->getEntityManager();
+        $em->persist($product);
+        $em->flush();
+
+        return $product;
+
+    } 
 
 }

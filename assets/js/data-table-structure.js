@@ -138,9 +138,9 @@ jQuery(function() {
         redirect(pathEdit,row);
     });
 
-    $(tableName+' tbody').on('click', 'button.buttonDetails', function() {
+    $(tableName+' tbody').on('click', 'button.buttonDelete', function() {
         let row = table.row($(this).parents('tr')).data();
-        redirect(pathDetails,row);
+        redirect(pathDelete,row);
     });
 
     function redirect(pathPartner,row) {

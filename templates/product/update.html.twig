@@ -1,20 +1,116 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ProductController!{% endblock %}
+{% block title %}
+	{{ 'newProduct'|trans({}, 'messages') }}
+{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+	<div class="container">
+		<div class="row mb-3">
+			<div class="col-md-6">
+				<h6 class="text-muted mb-0 fs-6">
+					<small>{{ 'newProduct'|trans({}, 'messages') }}</small>
+				</h6>
+				<h5>{{ 'product'|trans({}, 'messages') }}</h5>
+			</div>
+			<div class="col-md-6">
+				<a href="{{ path('app_product') }}" class="btn btn-secondary float-end">
+					<i class="bi bi-arrow-left me-2"></i>
+					{{ 'backToList'|trans({}, 'messages') }}
+				</a>
+			</div>
+		</div>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+		<div class="card shadow-lg">
+			<div class="card-body py-5">
+				<div class="container" style="max-width: 600px;">
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Raiz/Proyectos/Propio/github/optime-test/src/Controller/ProductController.php'|file_link(0) }}">src/Controller/ProductController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Raiz/Proyectos/Propio/github/optime-test/templates/product/index.html.twig'|file_link(0) }}">templates/product/index.html.twig</a></code></li>
-    </ul>
-</div>
+					{% for flashMessage in app.session.flashbag.get('success') %}
+						{# Success alert message #}
+						<div class="alert alert-success shadow-lg py-2 d-flex align-items-center">
+							<div class="flex-shrink-0">
+								<i class="bi bi-check-circle text-primary fs-1 float-start me-3"></i>
+							</div>
+							<div class="flex-grow-1 ms-3">
+								{{ flashMessage }}
+							</div>
+						</div>
+					{% endfor %}
+					{% for flashMessage in app.session.flashbag.get('error') %}
+						{# Error alert message #}
+						<div class="alert alert-danger shadow-lg py-2 d-flex align-items-center">
+							<div class="flex-shrink-0">
+								<i class="bi bi-exclamation-triangle text-danger fs-1 float-start me-3"></i>
+							</div>
+							<div class="flex-grow-1 ms-3">
+								{{ flashMessage }}
+							</div>
+						</div>
+					{% endfor %}
+
+					<form action="{{ path('app_product_update_action') }}" method="POST">
+						<h4>{{ 'registerNewProduct'|trans({}, 'messages') }}</h4>
+						<h6>{{ 'pleaseFillOutAllTheFields'|trans({}, 'messages') }}</h6>
+
+						<h6 class="mt-4 mb-3">{{ 'productInformation'|trans({}, 'messages') }}</h6>
+						<div class="mb-3">
+							<label for="{{ 'category'|trans({}, 'messages') }}">{{ 'category'|trans({}, 'messages') }}*</label>
+							<select class="form-control" name="category" id="category" required>
+								{% for category in categories %}
+									<option {{ ( ( category.id == product.category ) ? 'selected' : '' ) }} value="{{category.id}}">{{ category.name }} </option>
+								{% endfor %}
+							</select>
+						</div>
+
+						<div class="mb-3">
+							<label for="{{ 'code'|trans({}, 'messages') }}">{{ 'code'|trans({}, 'messages') }}*</label>
+							<input type="text" id="code" name="code" class='form-control' value="{{ product.code }}" placeholder="{{ 'code'|trans({}, 'messages') }}" autocomplete="off" autofocus="true" required></input>
+						</div>	
+
+						<div class="mb-3">
+							<label for="{{ 'name'|trans({}, 'messages') }}">{{ 'name'|trans({}, 'messages') }}*</label>
+							<input type="text" id="name" name="name" class='form-control' value="{{ product.name }}" placeholder="{{ 'name'|trans({}, 'messages') }}" autocomplete="off" autofocus="true" required></input>
+						</div>
+
+						<div class="mb-3">
+							<label for="{{ 'description'|trans({}, 'messages') }}">{{ 'description'|trans({}, 'messages') }}*</label>
+							<textarea id="description" name="description" class="form-control">{{ product.description }}</textarea>
+						</div>
+
+						<div class="mb-3">
+							<label for="{{ 'brand'|trans({}, 'messages') }}">{{ 'brand'|trans({}, 'messages') }}*</label>
+							<input type="text" id="brand" name="brand" class='form-control' value="{{ product.brand }}" placeholder="{{ 'brand'|trans({}, 'messages') }}" autocomplete="off" autofocus="true" required></input>
+						</div>
+
+						<div class="mb-3">
+							<label for="{{ 'price'|trans({}, 'messages') }}">{{ 'price'|trans({}, 'messages') }}*</label>
+							<input type="text" id="price" name="price" class='form-control' value="{{ product.price }}" placeholder="{{ 'price'|trans({}, 'messages') }}" autocomplete="off" autofocus="true" required></input>
+						</div>
+
+                        <div class="mb-3">
+							<label for="{{ 'active'|trans({}, 'messages') }}">{{ 'active'|trans({}, 'messages') }}*</label>
+							<select class="form-control" name="active" id="active" required>
+                                <option value="0">{{ 'no'|trans({}, 'messages') }}</option>
+                                <option {{ ( ( product.active ) ? 'selected' : '' ) }} value="0">{{ 'yes'|trans({}, 'messages') }}</option>
+							</select>
+						</div>
+
+                        <input type="hidden" name="productId" value="{{ product.id }}">
+
+						<input type="submit" value="{{ 'editProduct'|trans({}, 'messages') }}" class="btn btn-primary py-3 mt-4 w-100">					
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}
+{% block javascripts %}
+	{{ parent() }}
+    <script>
+        idSelect = "#category";
+		idPrice = "#price";
+		idInputReplace = "#code";
+    </script>
+    {{ encore_entry_script_tags('input-logic') }}
 {% endblock %}
